@@ -1,19 +1,17 @@
 
 from django.core.management.base import BaseCommand
 from octofit_tracker.models import User, Team, Activity, Leaderboard, Workout
-from django.db import connections
 
 class Command(BaseCommand):
     help = 'Populate the octofit_db database with test data'
 
     def handle(self, *args, **options):
-        # Drop collections directly using PyMongo to avoid PK issues
-        db = connections['default'].cursor().db_conn.client['octofit_db']
-        db['octofit_tracker_activity'].drop()
-        db['octofit_tracker_leaderboard'].drop()
-        db['octofit_tracker_workout'].drop()
-        db['octofit_tracker_user'].drop()
-        db['octofit_tracker_team'].drop()
+        # Delete in dependency order to avoid FK constraint issues
+        Activity.objects.all().delete()
+        Leaderboard.objects.all().delete()
+        Workout.objects.all().delete()
+        User.objects.all().delete()
+        Team.objects.all().delete()
 
         # Create teams
         marvel = Team.objects.create(name='Marvel')

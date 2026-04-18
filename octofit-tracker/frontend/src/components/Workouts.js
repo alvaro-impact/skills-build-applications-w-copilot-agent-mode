@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API = 'http://localhost:8000/api/workouts/';
+const API = '/api/workouts/';
 
 function Workouts() {
   const [workouts, setWorkouts] = useState([]);

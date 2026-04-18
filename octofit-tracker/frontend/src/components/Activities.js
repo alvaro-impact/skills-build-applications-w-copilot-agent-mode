@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API = 'http://localhost:8000/api/activities/';
+const API = '/api/activities/';
 
 function Activities() {
   const [activities, setActivities] = useState([]);
@@ -18,7 +18,13 @@ function Activities() {
   }, []);
 
   const badgeColor = (type) => {
-    const map = { Running: 'success', Cycling: 'info', Swimming: 'primary', Yoga: 'warning', Gym: 'secondary' };
+    const map = {
+      Run: 'success', Running: 'success',
+      Swim: 'primary', Swimming: 'primary',
+      Cycle: 'info', Cycling: 'info',
+      Yoga: 'warning',
+      Gym: 'secondary',
+    };
     return map[type] || 'dark';
   };
 

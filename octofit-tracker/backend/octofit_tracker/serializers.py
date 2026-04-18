@@ -1,14 +1,16 @@
 from rest_framework import serializers
 from .models import User, Team, Activity, Workout, Leaderboard
 
-class TeamSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Team
-        fields = '__all__'
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
+        fields = '__all__'
+
+class TeamSerializer(serializers.ModelSerializer):
+    members = UserSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Team
         fields = '__all__'
 
 class ActivitySerializer(serializers.ModelSerializer):

@@ -6,7 +6,7 @@ import Teams from './components/Teams';
 import Activities from './components/Activities';
 import Workouts from './components/Workouts';
 import Leaderboard from './components/Leaderboard';
-import octofitImg from './logo.svg'; // replaced below with actual image when available
+import octofitImg from './octofitapp-small.png';
 
 function Home() {
   return (

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API = 'http://localhost:8000/api/teams/';
+const API = '/api/teams/';
 
 function Teams() {
   const [teams, setTeams] = useState([]);
